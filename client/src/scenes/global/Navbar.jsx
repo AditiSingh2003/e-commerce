@@ -18,8 +18,7 @@ const Navbar = () => {
   const cart = useSelector(state => state.cart.cart);
 
 
-  return 
-  // outerbox
+  return (
   <Box 
     display= 'flex'
     alignItems= "center"
@@ -84,6 +83,7 @@ const Navbar = () => {
         </Box>
     </Box>
   </Box>
+  )
 }
 
 export default Navbar
