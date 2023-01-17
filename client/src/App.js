@@ -19,7 +19,7 @@ const ScrollToTop = () => {
   }, [pathname]);
 
   return null;
-}
+};
 
 function App() {
   return (
@@ -31,7 +31,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path= "item/itemId" element={<ItemDetails />} />
           <Route path="checkout/success" element={<Confirmation />} />
-
           </Routes>
           <CartMenu/>
         </BrowserRouter>

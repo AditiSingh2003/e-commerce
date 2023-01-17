@@ -1,9 +1,15 @@
 import React from 'react'
-import Navbar from '../global/Navbar'
+import MainCarousel from "./MainCarousel.jsx";
+import ShoppingList from "./ShoppingList.jsx";
+import Subscribe from "./Subscribe.jsx";
 
 const Home = () => {
   return (
-    <Navbar/>
+    <div className='home'>
+      <MainCarousel />
+      <ShoppingList/>
+      <Subscribe/>
+    </div>
   )
 }
 
