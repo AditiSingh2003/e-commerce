@@ -11,8 +11,6 @@ const ShoppingList = () => {
   const items = useSelector((state) => state.cart.items);
   const [value, setValue] = useState("all");
   const isNonMobile = useMediaQuery("(min-width: 600px)");
-  console.log("items", items);
-  console.log("value", value);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
