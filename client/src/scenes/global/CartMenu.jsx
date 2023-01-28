@@ -6,8 +6,8 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import styled from "@emotion/styled";
 import { shades } from "../../theme";
 import {
-  increaseCount,
   decreaseCount,
+  increaseCount,
   removeFromCart,
   setIsCartOpen,
 } from "../../state";
