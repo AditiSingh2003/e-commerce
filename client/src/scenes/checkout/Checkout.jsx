@@ -6,13 +6,12 @@ import * as yup from "yup";
 import { shades } from "../../theme";
 import Payment from "./Payment";
 import Shipping from "./Shipping";
-import { loadStripe } from "@stripe/stripe-js";
+import { useNavigate } from "react-router-dom";
 
-const stripePromise = loadStripe(
-  "anyrandomthingwillworkhere"
-);
+
 
 const Checkout = () => {
+  const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
   const cart = useSelector((state) => state.cart.cart);
   const isFirstStep = activeStep === 0;
@@ -30,33 +29,13 @@ const Checkout = () => {
     }
 
     if (isSecondStep) {
-      makePayment(values);
+        navigate("/checkout/success");
     }
 
     actions.setTouched({});
   };
 
-  async function makePayment(values) {
-    const stripe = await stripePromise;
-    const requestBody = {
-      userName: [values.firstName, values.lastName].join(" "),
-      email: values.email,
-      products: cart.map(({ id, count }) => ({
-        id,
-        count,
-      })),
-    };
-
-    const response = await fetch("http://localhost:1337/api/orders", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(requestBody),
-    });
-    const session = await response.json();
-    await stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
-  }
+ 
 
   return (
     <Box width="80%" m="100px auto">
@@ -170,6 +149,8 @@ const initialValues = {
   },
   email: "",
   phoneNumber: "",
+  cardNumber: "",
+  cvv: "",
 };
 
 const checkoutSchema = [
@@ -220,6 +201,8 @@ const checkoutSchema = [
   yup.object().shape({
     email: yup.string().required("required"),
     phoneNumber: yup.string().required("required"),
+    cardNumber: yup.string().required("required"),
+    cvv: yup.string().required("required"),
   }),
 ];
 

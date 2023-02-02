@@ -30,7 +30,31 @@ const Payment = ({ values, touched, errors, handleBlur, handleChange }) => {
           name="phoneNumber"
           error={!!touched.phoneNumber && !!errors.phoneNumber}
           helperText={touched.phoneNumber && errors.phoneNumber}
-          sx={{ gridColumn: "span 4" }}
+          sx={{ gridColumn: "span 4", marginBottom: "15px" }}
+        />
+        <TextField
+          fullWidth
+          type="text"
+          label="Card Number"
+          onBlur={handleBlur}
+          onChange={handleChange}
+          value={values.cardNumber}
+          name="cardNumber"
+          error={!!touched.cardNumber && !!errors.cardNumber}
+          helperText={touched.cardNumber && errors.cardNumber}
+          sx={{ gridColumn: "span 4", marginBottom: "15px" }}
+        />
+        <TextField
+          fullWidth
+          type="Number"
+          label="CVV"
+          onBlur={handleBlur}
+          onChange={handleChange}
+          value={values.cvv}
+          name="cvv"
+          error={!!touched.cvv && !!errors.cvv}
+          helperText={touched.cvv && errors.cvv}
+          sx={{ gridColumn: "span 2" }}
         />
       </Box>
     </Box>
